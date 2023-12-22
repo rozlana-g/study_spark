@@ -1,0 +1,11 @@
+[default]
+SOURCE_DATA_DIR = "@format {this.ROOT_DIR}/data/source"
+RESTAURANTS_DIR = "@format {this.SOURCE_DATA_DIR}/restaurants"
+WEATHER_DIR = "@format {this.SOURCE_DATA_DIR}/weather"
+
+
+[development]
+
+
+
+[production]

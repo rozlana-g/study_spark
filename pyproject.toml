@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "study-spark"
+version = "0.1.0"
+description = ""
+authors = ["Rozlana Gabdullina <rozlana.gab@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyspark = "3.5.0"
+pyarrow = "^14.0.2"
+pandas = "^2.1.4"
+geopy = "^2.4.1"
+geolib = "^1.0.7"
+haversine = "^2.8.0"
+dynaconf = "^3.2.4"
+opencage = "^2.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+notebook = "^7.0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
