@@ -38,6 +38,9 @@ def get_missing_coordinates(restaurants_df: ps.DataFrame) -> pd.DataFrame:
 def fill_missing_coordinates(restaurants_df: ps.DataFrame, ss: ps.session.SparkSession) -> ps.DataFrame:
     missing_coordinates_df = get_missing_coordinates(restaurants_df)
 
+    if missing_coordinates_df.empty:
+        return restaurants_df
+
     restaurants_df = (restaurants_df
                       .join(ss.createDataFrame(missing_coordinates_df),
                             on=["country", "city"],
