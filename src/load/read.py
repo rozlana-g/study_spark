@@ -9,13 +9,13 @@ from src.config import settings
 logger = logging.getLogger()
 
 
-def read_restaurants(ss) -> ps.DataFrame:
+def read_restaurants(ss, path=settings.RESTAURANTS_DIR) -> ps.DataFrame:
     df = (ss.read
           .format("csv")  # Returns a DataFrameReader that can be used to read data in as a DataFrame.
           .option("header", True)
           .schema(restaurants_schema)  # the underlying data source can skip the schema inference step,
           # and thus speed up data loading. but it does not check it!
-          .load(settings.RESTAURANTS_DIR)  # creates a dataframe from datasources,
+          .load(path)  # creates a dataframe from datasources,
           # on top which Spark transformations can be applied.
           # see https://stackoverflow.com/questions/56818629/what-does-load-do-in-spark
           .persist()  # I want to persist the dataframe in memory because I will reference it several times:

@@ -49,6 +49,7 @@ venv/bin/poetry run pytest
 ```
 
 
-## Questions for the trainers
-I wrote questions I encountered during the project in the code comments with marks # QUESTION.
-If it is possible, could we discuss them please. Thanks!
+## Screenshots
+As you can see from the screenshots, the application (the action) works for 12 minutes.
+![img_25.png](img_25.png)
+![img_26.png](img_26.png)
