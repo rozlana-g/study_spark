@@ -12,6 +12,7 @@ def get_missing_coordinates(restaurants_df: ps.DataFrame) -> pd.DataFrame:
     restaurants_to_fill = (restaurants_df
                            .filter((restaurants_df["lng"].isNull()) | isnan(restaurants_df["lng"]))
                            .select("country", "city")
+                           .dropDuplicates()
                            .collect()
                            )
 
@@ -31,9 +32,6 @@ def get_missing_coordinates(restaurants_df: ps.DataFrame) -> pd.DataFrame:
                            "missing_lng": results[0]['geometry']['lng']}, index=[0])
         missing_coordinates_df = pd.concat([missing_coordinates_df, df], axis=0)
 
-    #TODO: add logging
-    # add test for no duplicates
-
     return missing_coordinates_df
 
 
@@ -47,10 +45,8 @@ def fill_missing_coordinates(restaurants_df: ps.DataFrame, ss: ps.session.SparkS
                       .withColumn('lat', coalesce(col('lat'), col('missing_lat')))
                       .withColumn('lng', coalesce(col('lng'), col('missing_lng')))
                       .drop(col('missing_lat'), col('missing_lng'))
-                      .collect()
                       )
 
     # TODO: rewrite with drop, append
-
-    return ss.createDataFrame(restaurants_df)
+    return restaurants_df
 

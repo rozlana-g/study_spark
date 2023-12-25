@@ -19,5 +19,12 @@ def combine_weather_zips(weather_dir: str) -> None:
                     zipped_files.add(file)
                     weather_zip.writestr(file, weather_subfiles.open(file).read())
 
+    with zipfile.ZipFile(output_zip, 'r') as zip_ref:
+        # extract all files into the directory
+        zip_ref.extractall(f"{weather_dir}/weather_unzipped")
+
+    # TODO: do it in one step
+
+
 if __name__ == "__main__":
     combine_weather_zips(settings.WEATHER_DIR)

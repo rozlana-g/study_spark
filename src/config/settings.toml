@@ -1,8 +1,9 @@
 [default]
 SOURCE_DATA_DIR = "@format {this.ROOT_DIR}/data/source"
 RESTAURANTS_DIR = "@format {this.SOURCE_DATA_DIR}/restaurants"
-WEATHER_DIR = "@format {this.SOURCE_DATA_DIR}/weather"
-
+WEATHER_DIR = "@format {this.SOURCE_DATA_DIR}/weather/weather_unzipped/weather"
+OUTPUT_DIR = "@format {this.ROOT_DIR}/data/output"
+NUM_PARTITIONS = 8
 
 [development]
 
