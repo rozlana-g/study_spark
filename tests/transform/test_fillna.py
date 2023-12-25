@@ -5,8 +5,9 @@ from chispa.dataframe_comparer import *
 
 
 def test_no_missing_coordinates(spark):
+    "Tests that fill_missing_coordinates work even if there is no missing coordinates"
 
-    dff = read_restaurants(spark, './right')
+    dff = read_restaurants(spark, './data/tests/right')
 
 
     trr = fill_missing_coordinates(dff, spark)
